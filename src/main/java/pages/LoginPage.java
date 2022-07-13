@@ -27,4 +27,11 @@ public class LoginPage {
     public String checkErrorMssg(){
         return driver.findElementByCssSelector(errorAlertId).getText();
     }
+
+    public void loginUser(String username, String password) throws InterruptedException {
+        fillLoginForm(username, password);
+        driver.navigate().back();
+        Thread.sleep(2000);
+
+    }
 }

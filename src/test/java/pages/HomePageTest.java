@@ -22,13 +22,12 @@ class HomePageTest {
         driver.get(loginUrl);
         driver.manage().window().maximize();
         homePage = new HomePage(driver);
-
-
+        loginPage = new LoginPage(driver);
     }
 
     @Test
     public void testToVerifyOutcomeWhen_LoggedInUserClicksMoreServices() throws InterruptedException {
-        loginUser();
+        loginPage.loginUser("username","password");
 
         homePage.visitOnlineBankingPage();
 
@@ -48,7 +47,7 @@ class HomePageTest {
 
     @Test
     public void testToVerifyOutcomeWhen_LoggedInUserClicksCheckingAccountLink() throws InterruptedException {
-        loginUser();
+        loginPage.loginUser("username","password");
 
         homePage.visitCheckingAcctActivityPage();
 
@@ -68,7 +67,7 @@ class HomePageTest {
 
     @Test
     public void testToVerifyOutcomeWhen_LoggedInUserClicksTransferFundsLink() throws InterruptedException {
-       loginUser();
+        loginPage.loginUser("username","password");
 
         homePage.visitTransferFundsPage();
 
@@ -88,7 +87,7 @@ class HomePageTest {
 
     @Test
     public void testToVerifyOutcomeWhen_LoggedInUserClicksMyMoneyMapLink() throws InterruptedException {
-        loginUser();
+        loginPage.loginUser("username","password");
 
         homePage.visitMoneyMapPage();
 
@@ -111,11 +110,4 @@ class HomePageTest {
         driver.quit();
     }
 
-    private void loginUser() throws InterruptedException {
-        loginPage = new LoginPage(driver);
-        loginPage.fillLoginForm("username", "password");
-        driver.navigate().back();
-        Thread.sleep(2000);
-
-    }
 }
