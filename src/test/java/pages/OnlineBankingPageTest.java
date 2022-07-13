@@ -24,7 +24,7 @@ class OnlineBankingPageTest {
 
         onlineBankingPage = new OnlineBankingPage(driver);
         loginPage = new LoginPage(driver);
-        loginPage.loginUser("username","password");
+        loginPage.loginUser("username", "password");
 
     }
 
@@ -47,14 +47,14 @@ class OnlineBankingPageTest {
     }
 
 
-
     @Test
     public void testToVerifyOutcomeWhen_LoggedInUserClicksTransferFundsLink() throws InterruptedException {
-    onlineBankingPage.visitTransferFundsPage();
+        onlineBankingPage.visitTransferFundsPage();
 
         String expectedUrl = "http://zero.webappsecurity.com/bank/transfer-funds.html";
         assertEquals(expectedUrl, driver.getCurrentUrl());
     }
+
     @Test
     public void testToVerifyOutcomeWhen_LoggedInUserClicksPayBillsLink() throws InterruptedException {
         onlineBankingPage.visitPayBillsPage();
@@ -62,6 +62,7 @@ class OnlineBankingPageTest {
         String expectedUrl = "http://zero.webappsecurity.com/bank/pay-bills.html";
         assertEquals(expectedUrl, driver.getCurrentUrl());
     }
+
     @Test
     public void testToVerifyOutcomeWhen_LoggedInUserClicksMyMoneyMapLink() throws InterruptedException {
         onlineBankingPage.visitMoneyMapLinkPage();
@@ -77,6 +78,7 @@ class OnlineBankingPageTest {
         String expectedUrl = "http://zero.webappsecurity.com/bank/online-statements.html";
         assertEquals(expectedUrl, driver.getCurrentUrl());
     }
+
     @AfterEach
     void tearDown() {
         driver.quit();

@@ -18,11 +18,12 @@ class LoginPageTest {
         driver = new ChromeDriver();
         driver.get("http://zero.webappsecurity.com/login.html");
         driver.manage().window().maximize();
+
+        loginPage = new LoginPage(driver);
     }
 
     @Test
     public void testToVerifyOutcome_WhenUserLogsInWithValidPayload() throws InterruptedException {
-        loginPage = new LoginPage(driver);
         loginPage.fillLoginForm("username","password");
 
         driver.navigate().back();
@@ -33,7 +34,6 @@ class LoginPageTest {
 
     @Test
     public void  testToVerifyOutcomeWhen_UserLogsInWithInValidPayload() throws InterruptedException {
-        loginPage = new LoginPage(driver);
         loginPage.fillLoginForm("user","pass");
 
         String errorMssg = loginPage.checkErrorMssg();
@@ -45,7 +45,6 @@ class LoginPageTest {
 
     @Test
     public void  testToVerifyOutcomeWhen_UserLogsInWithBlankPayload() throws InterruptedException {
-        loginPage = new LoginPage(driver);
         loginPage.fillLoginForm("","");
 
         String errorMssg = loginPage.checkErrorMssg();
